@@ -22,7 +22,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:HomePage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Map">
@@ -33,7 +33,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:HomePage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
