@@ -18,7 +18,13 @@
                 <Label Text="Hey, wie heisst du?"
                        VerticalOptions="Center"
                        HorizontalOptions="Center" />
-                <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20" Text="{Binding UserName,Mode=TwoWay}"/>
+                <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20" Text="{Binding UserName,Mode=TwoWay}">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments><KeyboardFlags>None</KeyboardFlags></x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
             </StackLayout>
             <StackLayout VerticalOptions="End">
                 <Button Text="Weiter" HorizontalOptions="End" Command="{Binding SaveUserCommand}"/>
