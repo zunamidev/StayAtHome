@@ -16,12 +16,7 @@ namespace StayAtHoome.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            var builder = this.CreateJobBuilderUsingJobId<PeriodicLocationTrackerJobService>(1)
-                .SetPersisted(false)
-                .SetPeriodic(60_000);
-            
-            var scheduler = (JobScheduler)GetSystemService(JobSchedulerService);
-            scheduler.Schedule(builder.Build());
+            this.SchedulePeriodicTrackerJob();
             
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
