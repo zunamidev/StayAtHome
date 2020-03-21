@@ -24,9 +24,9 @@ namespace StayAtHoome.Views
         private async Task CheckUserExists()
         {
             await LocalDatabase.WaitInitialized;
-            // var userRepo = DependencyService.Get<UserRepository>();
-            // var user = await userRepo.GetUserAsync();
-            // if (user != null) return;
+            var userRepo = DependencyService.Get<UserRepository>();
+            var user = await userRepo.GetUserAsync();
+            if (user != null) return;
 
             await Navigation.PushModalAsync(new OnboardingPage());
         }

@@ -2,7 +2,7 @@
 <ContentPage
 xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="StayAtHoome.Views.HomePage" xmlns:vm="clr-namespace:StayAtHoome.ViewModels" Title="{Binding Title}">
     <ContentPage.BindingContext>
-        <vm:AboutViewModel />
+        <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -29,10 +29,7 @@ xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.
                         </Label.Text>
                     </Label>
 
-                    <Label FontSize="28" FontAttributes="Bold" TextColor="White">
-                        <Label.Text>
-                            Hallo Hamza
-                        </Label.Text>
+                    <Label FontSize="28" FontAttributes="Bold" TextColor="White" Text="{Binding Greeting}">
                     </Label>
                     </StackLayout>
                 </ContentView>
