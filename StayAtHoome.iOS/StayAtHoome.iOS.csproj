@@ -121,6 +121,10 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="LaunchScreen1.storyboard" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\logo500x.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\logo500x-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -141,5 +145,8 @@
       <Project>{EB681732-13C4-4B0E-8047-6004A2B88243}</Project>
       <Name>StayAtHoome</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\SplashScreen.imageset\" />
   </ItemGroup>
 </Project>
