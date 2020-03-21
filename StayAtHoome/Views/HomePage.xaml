@@ -38,34 +38,6 @@ xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.
                 </ContentView>
             </StackLayout>
         </StackLayout>
-
-
-                  <StackLayout>
-            <StackLayout>
-                <ContentView>
-                    <StackLayout>
-                    <Label FontSize="18" TextColor="White">
-                        <Label.Text>
-                            Gesamte Zeit Zuhause:
-                        </Label.Text>
-                    </Label>
-
-                    <Label FontSize="28" TextColor="White">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="72 Stunden" FontAttributes="Bold"/>
-                                    <Span Text="↑" TextColor="#34C231"/>
-                                    <Span Text="Steigung" TextColor="#34C231"/>
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                     </Label>
-                    </StackLayout>
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-
         <ScrollView Grid.Row="1">
 
 
