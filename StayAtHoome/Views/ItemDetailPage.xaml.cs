@@ -25,6 +25,7 @@ namespace StayAtHoome.Views
         public ItemDetailPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
 
             var item = new Item
             {

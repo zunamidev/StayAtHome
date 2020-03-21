@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace StayAtHoome.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
@@ -12,6 +13,7 @@ namespace StayAtHoome.Views
     {
         public AboutPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
     }

@@ -9,7 +9,6 @@ namespace StayAtHoome.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
         }
 
