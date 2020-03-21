@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
+using AsyncAwaitBestPractices;
+using StayAtHoome.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +16,19 @@ namespace StayAtHoome.Views
         public MainPage()
         {
             InitializeComponent();
+            
+            CheckUserExists().SafeFireAndForget();
+        }
+        
+
+        private async Task CheckUserExists()
+        {
+            await LocalDatabase.WaitInitialized;
+            // var userRepo = DependencyService.Get<UserRepository>();
+            // var user = await userRepo.GetUserAsync();
+            // if (user != null) return;
+
+            await Navigation.PushModalAsync(new OnboardingPage());
         }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using AsyncAwaitBestPractices;
+using StayAtHoome.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using StayAtHoome.Services;
@@ -13,7 +16,9 @@ namespace StayAtHoome
         {
             InitializeComponent();
 
+            DependencyService.Register<UserRepository>();
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<NavigationService>();
             MainPage = new MainPage();
         }
 
