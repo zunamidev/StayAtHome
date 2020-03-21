@@ -13,9 +13,9 @@ namespace StayAtHoome.Data
         public async Task CreateLocationRecord(LocationRecord record)
         {
             await LocalDatabase.WaitInitialized;
-            await this._database.InsertAsync(record);
+            await _database.InsertAsync(record);
 
-            var records = await this._database.Table<LocationRecord>().CountAsync();
+            var records = await _database.Table<LocationRecord>().CountAsync();
             
             Console.WriteLine($"We have {records} location records");
         }

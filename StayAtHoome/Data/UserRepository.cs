@@ -1,4 +1,3 @@
-using System.Threading;
 using System.Threading.Tasks;
 using SQLite;
 using StayAtHoome.Models;
@@ -19,15 +18,13 @@ namespace StayAtHoome.Data
             return await _database.Table<User>().FirstOrDefaultAsync();
         }
 
-        public async Task<User> CreateUserAsync(string name)
+        public async Task CreateUserAsync(string name)
         {
             await LocalDatabase.WaitInitialized;
-            var user = new User() {Name = name};
+            var user = new User {Name = name};
             await _database.InsertAsync(user);
 
             UserChanged?.Invoke();
-
-            return user;
         }
     }
 }
