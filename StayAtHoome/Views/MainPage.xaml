@@ -3,7 +3,7 @@
     <TabbedPage.Children>
         <NavigationPage Title="Map">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:Map />
             </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
