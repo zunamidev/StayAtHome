@@ -10,28 +10,6 @@ using Xamarin.Forms;
 
 namespace StayAtHoome.ViewModels
 {
-    public class RelayCommand : Command
-    {
-        public RelayCommand(Action<object> execute) : base(execute)
-        {
-        }
-
-        public RelayCommand(Action execute) : base(execute)
-        {
-        }
-
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : base(execute, canExecute)
-        {
-        }
-
-        public RelayCommand(Action execute, Func<bool> canExecute) : base(execute, canExecute)
-        {
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-        }
-    }
     public class OnboardingViewModel : BaseViewModel
     {
         public Command SaveUserCommand { get; }
@@ -62,7 +40,7 @@ namespace StayAtHoome.ViewModels
 
         public OnboardingViewModel()
         {
-            SaveUserCommand = new RelayCommand(() => SaveUser().SafeFireAndForget(), CanSaveUser);
+            SaveUserCommand = new Command(() => SaveUser().SafeFireAndForget(), CanSaveUser);
 
             PropertyChanged += (sender, args) => SaveUserCommand.ChangeCanExecute();
             LoadUser().SafeFireAndForget();
