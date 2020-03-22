@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using AsyncAwaitBestPractices;
+using StayAtHoome.Data;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Map = Xamarin.Forms.Maps.Map;
+
 namespace StayAtHoome.ViewModels
 {
     class MapViewModel : BaseViewModel
     {
-        public Position userLocation
-        {
-            get;
-            set;
-        }
-        public Position homeLocation
-        {
-            get;
-            set;
-        }
-
-        public Int32 distance
-        {
-            get;
-            set;
-        }
-
-        public Map userMap
+        public Map UserMap
         {
             get;
             set;
@@ -31,17 +21,34 @@ namespace StayAtHoome.ViewModels
 
         public MapViewModel()
         {
-            userLocation = new Position();
-            homeLocation = new Position();
+            UpdateLocation().SafeFireAndForget();
+        }
 
-            userMap = new Map(MapSpan.FromCenterAndRadius(
-                new Position(49.007038, 8.397768), Distance.FromKilometers(10)));
+        private async Task UpdateLocation()
+        {
+            try
+            {
+                var user = await DependencyService.Get<UserRepository>().GetUserAsync();
+                var location = await Geolocation.GetLocationAsync();
+                UserMap.Pins.Clear();
+                if (location != null)
+                {
+                    var centerPosition = new Position(location.Latitude, location.Longitude);
+                    UserMap.MoveToRegion(MapSpan.FromCenterAndRadius(centerPosition, Distance.FromKilometers(10)));
 
-            Pin p1 = new Pin();
-            p1.Position = new Position(49.008851, 8.398506);
-            p1.Label = "Alte Bank - Gutes Restaurant, excellente Paella gegessen";
+                    var current = new Pin
+                    {
+                        Position = centerPosition,
+                        Label = "Ich"
+                    };
+                    UserMap.Pins.Add(current);
+                }
+            }
+            catch (Exception e)
+            {
+                
+            }
 
-            userMap.Pins.Add(p1);
         }
     }
 }
