@@ -64,9 +64,7 @@ namespace StayAtHoome.ViewModels
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
             }
-
         }
     }
 }

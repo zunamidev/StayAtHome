@@ -36,6 +36,11 @@
                 <views:Map />
             </x:Arguments>
         </NavigationPage>
+        <NavigationPage Title="Debug">
+            <x:Arguments>
+                <views:DebugPage />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 
 </TabbedPage>

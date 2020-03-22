@@ -36,5 +36,13 @@ namespace StayAtHoome.Data
                 _initialized = true;
             }
         }
+
+        public static async void Clear()
+        {
+            await WaitInitialized;
+
+            await Database.DeleteAllAsync<User>();
+            await Database.DeleteAllAsync<LocationRecord>();
+        }
     }
 }
