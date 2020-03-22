@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     x:Class="StayAtHoome.Views.HomePage" xmlns:vm="clr-namespace:StayAtHoome.ViewModels"
-    xmlns:cardViewNetStandard="clr-namespace:CardViewNetStandard;assembly=CardViewNetStandard"
     Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
