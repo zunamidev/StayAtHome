@@ -25,6 +25,6 @@ namespace StayAtHoome.Models
         public DateTimeOffset From { get; set; }
         public Entry[] Entries { get; set; } = { };
 
-        public Entry Today => Entries.FirstOrDefault(x => x.Day.Date == DateTimeOffset.Now.Date);
+        public Entry Today => Entries?.FirstOrDefault(x => x.Day.Date == DateTimeOffset.Now.Date);
     }
 }
