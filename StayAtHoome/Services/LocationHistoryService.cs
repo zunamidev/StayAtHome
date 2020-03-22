@@ -12,15 +12,14 @@ namespace StayAtHoome.Services
 {
     public class LocationHistoryService
     {
-        public static readonly TimeSpan TimeSpan = TimeSpan.FromMinutes(15);
         public static readonly double HomeRadius = 0.030;
         
         public async Task<LocationHistory> GetLocationHistory(DateTimeOffset from)
         {
             var user = await DependencyService.Get<UserRepository>().GetUserAsync();
-            var history = new LocationHistory(@from);
+            var history = new LocationHistory(from);
             
-            if (!user?.HasHomeLocation == true)
+            if (user == null || !user.HasHomeLocation)
             {
                 return history;
             }

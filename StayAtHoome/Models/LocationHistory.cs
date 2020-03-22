@@ -13,6 +13,8 @@ namespace StayAtHoome.Models
             public int MissingDataHours { get; set; }
 
             public int HoursNotAtHome => HoursTotal - HoursAtHome - MissingDataHours;
+
+            public DayOfWeek DayOfWeek => Day.DayOfWeek;
         }
         
         public LocationHistory(DateTimeOffset @from)
@@ -21,7 +23,7 @@ namespace StayAtHoome.Models
         }
 
         public DateTimeOffset From { get; set; }
-        public Entry[] Entries { get; set; }
+        public Entry[] Entries { get; set; } = { };
 
         public Entry Today => Entries.FirstOrDefault(x => x.Day.Date == DateTimeOffset.Now.Date);
     }

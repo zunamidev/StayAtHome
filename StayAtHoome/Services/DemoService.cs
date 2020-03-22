@@ -19,7 +19,7 @@ namespace StayAtHoome.Services
         {
             var locationRepo = DependencyService.Get<LocationRecordRepository>();
             var count = await locationRepo.Count();
-            if (count > 20) return;
+            // if (count > 20) return;
 
             var assembly = Assembly.GetAssembly(this.GetType());
             var stream = assembly
@@ -50,7 +50,7 @@ namespace StayAtHoome.Services
 
                 await locationRepo.Clear();
 
-                foreach (var feature in featureCollection.Features.TakeEvery(100))
+                foreach (var feature in featureCollection.Features.TakeEvery(20))
                 {
                     var timeString = feature.Properties.ContainsKey("time")
                         ? feature.Properties["time"] as string
