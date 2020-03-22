@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
+using StayAtHoome.Background;
 using StayAtHoome.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,6 +19,7 @@ namespace StayAtHoome.Views
             InitializeComponent();
             
             CheckUserExists().SafeFireAndForget();
+            new PeriodicLocationTracker().Execute().SafeFireAndForget();
         }
         
 

@@ -29,14 +29,14 @@ namespace StayAtHoome.ViewModels
 
         private bool CanSaveUser()
         {
-            return !string.IsNullOrWhiteSpace(this._userName);
+            return !string.IsNullOrWhiteSpace(_userName);
         }
 
         private async Task SaveUser()
         {
             var userRepo = DependencyService.Get<UserRepository>();
 
-            await userRepo.CreateUserAsync(this._userName);
+            await userRepo.CreateUserAsync(_userName);
 
             var navService = DependencyService.Get<NavigationService>();
             await navService.PopModal();
