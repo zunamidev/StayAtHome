@@ -12,12 +12,12 @@
         <vm:OnboardingViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        
+
         <StackLayout Margin="20">
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Label Text="Hey, wie heisst du?"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center" 
+                       HorizontalOptions="Center"
                        FontSize="18"/>
                 <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20" Text="{Binding UserName,Mode=TwoWay}">
                     <Entry.Keyboard>
