@@ -6,12 +6,13 @@ using Android.Content;
 namespace StayAtHoome.Droid
 {
 
-    [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true)]
-    [IntentFilter(new[] {Intent.ActionLockedBootCompleted})]
-    public class BootedBroadcastReceiver: BroadcastReceiver
+[BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true)]
+[IntentFilter(new[] {Intent.ActionLockedBootCompleted})]
+public class BootedBroadcastReceiver: BroadcastReceiver
+{
+    public override void OnReceive(Context context, Intent intent)
     {
-        public override void OnReceive(Context context, Intent intent)
-        {
-            context.SchedulePeriodicTrackerJob();
-        }
-    }}
+        context.SchedulePeriodicTrackerJob();
+    }
+}
+}

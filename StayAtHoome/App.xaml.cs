@@ -10,28 +10,28 @@ using StayAtHoome.Views;
 
 namespace StayAtHoome
 {
-    public partial class App : Application
+public partial class App : Application
+{
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            DependencyService.Register<UserRepository>();
-            DependencyService.Register<NavigationService>();
-            DependencyService.Register<LocationRecordRepository>();
-            MainPage = new MainPage();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
-        }
+        DependencyService.Register<UserRepository>();
+        DependencyService.Register<NavigationService>();
+        DependencyService.Register<LocationRecordRepository>();
+        MainPage = new MainPage();
     }
+
+    protected override void OnStart()
+    {
+    }
+
+    protected override void OnSleep()
+    {
+    }
+
+    protected override void OnResume()
+    {
+    }
+}
 }

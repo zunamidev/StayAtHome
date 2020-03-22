@@ -7,53 +7,53 @@ using Xamarin.Forms;
 
 namespace StayAtHoome.Background
 {
-    public class PeriodicLocationTracker
+public class PeriodicLocationTracker
+{
+    public async Task<bool> Execute()
     {
-        public async Task<bool> Execute()
+        var repo = new LocationRecordRepository();
+
+        Console.WriteLine("Starting location tracking");
+        try
         {
-            var repo = new LocationRecordRepository();
+            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+            var location = await Geolocation.GetLocationAsync(request);
 
-            Console.WriteLine("Starting location tracking");
-            try
+            if (location != null)
             {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var location = await Geolocation.GetLocationAsync(request);
-
-                if (location != null)
+                Console.WriteLine(
+                    $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+                await repo.CreateLocationRecord(new LocationRecord
                 {
-                    Console.WriteLine(
-                        $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                    await repo.CreateLocationRecord(new LocationRecord
-                    {
-                        Accuracy = location.Accuracy,
-                        Latitude = location.Latitude,
-                        Longitude = location.Longitude,
-                        Timestamp = location.Timestamp
-                    });
-                }
+                    Accuracy = location.Accuracy,
+                    Latitude = location.Latitude,
+                    Longitude = location.Longitude,
+                    Timestamp = location.Timestamp
+                });
             }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                Console.WriteLine(fnsEx);
-                // Handle not supported on device exception
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                Console.WriteLine(fneEx);
-                // Handle not enabled on device exception
-            }
-            catch (PermissionException pEx)
-            {
-                Console.WriteLine(pEx);
-                // Handle permission exception
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                // Unable to get location
-            }
-
-            return true;
         }
+        catch (FeatureNotSupportedException fnsEx)
+        {
+            Console.WriteLine(fnsEx);
+            // Handle not supported on device exception
+        }
+        catch (FeatureNotEnabledException fneEx)
+        {
+            Console.WriteLine(fneEx);
+            // Handle not enabled on device exception
+        }
+        catch (PermissionException pEx)
+        {
+            Console.WriteLine(pEx);
+            // Handle permission exception
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            // Unable to get location
+        }
+
+        return true;
     }
+}
 }
