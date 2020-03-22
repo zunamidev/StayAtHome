@@ -5803,13 +5803,16 @@ namespace StayAtHoome.Droid
 			public const int people = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int tooltip_frame_dark = 2131165305;
+			public const int screen = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int tooltip_frame_light = 2131165306;
+			public const int tooltip_frame_dark = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int xamarin_logo = 2131165307;
+			public const int tooltip_frame_light = 2131165307;
+			
+			// aapt resource value: 0x7F07007C
+			public const int xamarin_logo = 2131165308;
 			
 			static Drawable()
 			{
@@ -6779,6 +6782,9 @@ namespace StayAtHoome.Droid
 			// aapt resource value: 0x7F0C0003
 			public const int launcher_foreground = 2131492867;
 			
+			// aapt resource value: 0x7F0C0004
+			public const int screen = 2131492868;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -7662,6 +7668,9 @@ namespace StayAtHoome.Droid
 			
 			// aapt resource value: 0x7F0E00E6
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131624166;
+			
+			// aapt resource value: 0x7F0E01F8
+			public const int splashscreen = 2131624440;
 			
 			// aapt resource value: 0x7F0E00E7
 			public const int TextAppearance_AppCompat = 2131624167;

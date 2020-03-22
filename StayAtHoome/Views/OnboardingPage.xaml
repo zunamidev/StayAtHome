@@ -17,7 +17,8 @@
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Label Text="Hey, wie heisst du?"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Center" 
+                       FontSize="18"/>
                 <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20" Text="{Binding UserName,Mode=TwoWay}">
                     <Entry.Keyboard>
                         <Keyboard x:FactoryMethod="Create">
@@ -27,7 +28,12 @@
                 </Entry>
             </StackLayout>
             <StackLayout VerticalOptions="End">
-                <Button Text="Weiter" HorizontalOptions="End" Command="{Binding SaveUserCommand}"/>
+                <Button Text="Weiter" HorizontalOptions="End"
+                        Command="{Binding SaveUserCommand}"
+                        FontSize="15"
+                        Padding="12"
+                        BackgroundColor="#91B9D6"
+                        CornerRadius="8"/>
             </StackLayout>
 
         </StackLayout>
