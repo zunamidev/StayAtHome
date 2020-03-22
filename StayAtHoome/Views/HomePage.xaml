@@ -24,7 +24,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Image Source="Header.png" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Aspect="Fill"
-                   HeightRequest="250" />
+                   HeightRequest="150" />
 
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
@@ -36,36 +36,57 @@
                                 </Label.Text>
                             </Label>
 
-                            <Label FontSize="28" FontAttributes="Bold" TextColor="White" Text="{Binding Greeting}" />
+                            <Label FontSize="28"
+                                   FontAttributes="Bold"
+                                   Padding="0, 0, 0, 40"
+                                   TextColor="White" Text="{Binding Greeting}" />
+
+                                        <Frame
+               HasShadow="True" CornerRadius="10" BorderColor="#F2F2F2">
                             <StackLayout Orientation="Horizontal">
-                                <Label FontSize="12" TextColor="White" HorizontalOptions="Start">
+                                <Label FontSize="12" TextColor="Black" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Heute Zuhause: " />
                                             <Span
+                                                FontAttributes="Bold"
+                                                TextColor="#34C231"
                                                 Text="{Binding LocationHistory.Today.HoursAtHome, TargetNullValue='0'}" />
-                                            <Span Text="h" />
+                                            <Span Text="h" FontAttributes="Bold" TextColor="#34C231"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label FontSize="12" TextColor="White" HorizontalOptions="End">
+                                <Label FontSize="12" TextColor="Black" HorizontalOptions="End">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Nicht zuhause: " />
                                             <Span
+                                                TextColor="#A01D1D"
+                                                FontAttributes="Bold"
                                                 Text="{Binding LocationHistory.Today.HoursNotAtHome, TargetNullValue='0'}" />
-                                            <Span Text="h" />
+                                            <Span Text="h"
+                                                  FontAttributes="Bold"
+                                                  TextColor="#A01D1D"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
                             </StackLayout>
+                           </Frame>
+
                         </StackLayout>
                     </ContentView>
                 </StackLayout>
             </StackLayout>
 
+
             <StackLayout Grid.Row="1">
-                <Frame HasShadow="True" BindingContext="{Binding WeeksViewModels[0]}" Margin="20">
+                <Frame HasShadow="True"
+                       BindingContext="{Binding WeeksViewModels[0]}"
+                       Margin="20"
+                       CornerRadius="10"
+                       BorderColor="#F2F2F2"
+
+                       >
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding DateString}" />
                         <Label Text="{Binding TotalString}" />
