@@ -1,6 +1,8 @@
 ﻿using System;
 
 using Android.App;
+using Android.App.Job;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
@@ -17,6 +19,8 @@ namespace StayAtHoome.Droid
             base.Window.RequestFeature(WindowFeatures.ActionBar);
             base.SetTheme(Resource.Style.MainTheme);
 
+            this.SchedulePeriodicTrackerJob();
+            
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

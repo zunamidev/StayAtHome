@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using AsyncAwaitBestPractices;
 using SQLite;
 using StayAtHoome.Models;
 
@@ -35,6 +34,10 @@ namespace StayAtHoome.Data
                 if (Database.TableMappings.All(m => m.MappedType.Name != typeof(User).Name))
                 {
                     await Database.CreateTablesAsync(CreateFlags.None, typeof(User)).ConfigureAwait(false);
+                }
+                if (Database.TableMappings.All(m => m.MappedType.Name != typeof(LocationRecord).Name))
+                {
+                    await Database.CreateTablesAsync(CreateFlags.None, typeof(LocationRecord)).ConfigureAwait(false);
                 }
                 _initialized = true;
             }

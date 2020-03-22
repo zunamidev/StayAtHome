@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 using StayAtHoome.Data;
 using StayAtHoome.Models;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace StayAtHoome.ViewModels
@@ -13,10 +10,7 @@ namespace StayAtHoome.ViewModels
     {
         public User User { get; private set; }
 
-        public string Greeting
-        {
-            get { return User != null ? $"Hallo {User.Name}" : ""; }
-        }
+        public string Greeting => User != null ? $"Hallo {User.Name}" : "";
 
         public HomeViewModel()
         {
@@ -28,7 +22,7 @@ namespace StayAtHoome.ViewModels
         private async Task UpdateUser()
         {
             var userRepo = DependencyService.Get<UserRepository>();
-            this.User = await userRepo.GetUserAsync();
+            User = await userRepo.GetUserAsync();
             OnPropertyChanged(nameof(Greeting));
         }
     }

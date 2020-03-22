@@ -8,7 +8,7 @@ namespace StayAtHoome.Data
     {
         public const string DatabaseFilename = "StayAtHome.db3";
 
-        public const SQLite.SQLiteOpenFlags Flags =
+        public const SQLiteOpenFlags Flags =
             SQLiteOpenFlags.Create |
             SQLiteOpenFlags.ReadWrite |
             SQLiteOpenFlags.FullMutex;

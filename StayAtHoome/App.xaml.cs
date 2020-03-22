@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
+using StayAtHoome.Background;
 using StayAtHoome.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,14 +12,13 @@ namespace StayAtHoome
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<UserRepository>();
-            DependencyService.Register<MockDataStore>();
             DependencyService.Register<NavigationService>();
+            DependencyService.Register<LocationRecordRepository>();
             MainPage = new MainPage();
         }
 
