@@ -8,21 +8,24 @@ using Xamarin.Forms.Xaml;
 using StayAtHoome.Services;
 using StayAtHoome.Views;
 
-namespace StayAtHoome {
-public partial class App : Application {
-  public App() {
-    InitializeComponent();
+namespace StayAtHoome
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-    DependencyService.Register<UserRepository>();
-    DependencyService.Register<NavigationService>();
-    DependencyService.Register<LocationRecordRepository>();
-    MainPage = new MainPage();
-  }
+            DependencyService.Register<UserRepository>();
+            DependencyService.Register<NavigationService>();
+            DependencyService.Register<LocationRecordRepository>();
+            MainPage = new MainPage();
+        }
 
-  protected override void OnStart() {}
+        protected override void OnStart() { }
 
-  protected override void OnSleep() {}
+        protected override void OnSleep() { }
 
-  protected override void OnResume() {}
-}
+        protected override void OnResume() { }
+    }
 }
