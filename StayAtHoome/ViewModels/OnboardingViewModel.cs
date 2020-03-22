@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AsyncAwaitBestPractices;
-using GalaSoft.MvvmLight.Command;
 using StayAtHoome.Data;
 using StayAtHoome.Models;
 using StayAtHoome.Services;
@@ -11,9 +10,31 @@ using Xamarin.Forms;
 
 namespace StayAtHoome.ViewModels
 {
+    public class RelayCommand : Command
+    {
+        public RelayCommand(Action<object> execute) : base(execute)
+        {
+        }
+
+        public RelayCommand(Action execute) : base(execute)
+        {
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : base(execute, canExecute)
+        {
+        }
+
+        public RelayCommand(Action execute, Func<bool> canExecute) : base(execute, canExecute)
+        {
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+        }
+    }
     public class OnboardingViewModel : BaseViewModel
     {
-        public RelayCommand SaveUserCommand { get; }
+        public Command SaveUserCommand { get; }
 
         private string _userName = string.Empty;
 
@@ -31,7 +52,7 @@ namespace StayAtHoome.ViewModels
             set => SetProperty(ref _currentlyHome, value);
         }
 
-        private bool _hasNoHomeLocation;
+        private bool _hasNoHomeLocation = true;
 
         public bool HasNoHomeLocation
         {
@@ -43,7 +64,7 @@ namespace StayAtHoome.ViewModels
         {
             SaveUserCommand = new RelayCommand(() => SaveUser().SafeFireAndForget(), CanSaveUser);
 
-            PropertyChanged += (sender, args) => SaveUserCommand.RaiseCanExecuteChanged();
+            PropertyChanged += (sender, args) => SaveUserCommand.ChangeCanExecute();
             LoadUser().SafeFireAndForget();
         }
 

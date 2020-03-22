@@ -17,7 +17,7 @@ namespace StayAtHoome.Services
         public async Task<LocationHistory> GetLocationHistory(DateTimeOffset from)
         {
             var user = await DependencyService.Get<UserRepository>().GetUserAsync();
-            var history = new LocationHistory(from);
+            var history = new LocationHistory(from, new LocationHistory.Entry[]{});
             
             if (user == null || !user.HasHomeLocation)
             {
@@ -62,9 +62,7 @@ namespace StayAtHoome.Services
                 currentDay = nextDay;
             }
 
-            history.Entries = entries.ToArray();
-
-            return history;
+            return new LocationHistory(history.From, entries.ToArray());
         }
 
         private bool WasAlwaysHome(User user, LocationRecord[] locations)

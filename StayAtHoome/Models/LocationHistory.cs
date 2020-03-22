@@ -17,14 +17,16 @@ namespace StayAtHoome.Models
             public DayOfWeek DayOfWeek => Day.DayOfWeek;
         }
         
-        public LocationHistory(DateTimeOffset @from)
+        public LocationHistory(DateTimeOffset @from, Entry[] entries)
         {
             From = from;
+            Entries = entries;
+            Today = entries.FirstOrDefault(x => x.Day.Date == DateTimeOffset.Now.Date);
         }
 
-        public DateTimeOffset From { get; set; }
-        public Entry[] Entries { get; set; } = { };
+        public DateTimeOffset From { get; }
+        public Entry[] Entries { get; }
 
-        public Entry Today => Entries?.FirstOrDefault(x => x.Day.Date == DateTimeOffset.Now.Date);
+        public Entry Today { get; }
     }
 }
