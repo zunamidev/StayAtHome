@@ -14,14 +14,12 @@ namespace StayAtHoome.Views
     {
         ViewModels.MapViewModel viewModel;
 
-       
         public Map()
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            
-            BindingContext = viewModel = new ViewModels.MapViewModel();
 
+            BindingContext = viewModel = new ViewModels.MapViewModel();
         }
     }
 }

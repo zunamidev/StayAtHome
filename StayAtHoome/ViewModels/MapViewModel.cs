@@ -6,26 +6,36 @@ namespace StayAtHoome.ViewModels
 {
     class MapViewModel : BaseViewModel
     {
-        public Position userLocation { get; set; }
-        public Position homeLocation { get; set; }
+        public Position userLocation
+        {
+            get;
+            set;
+        }
+        public Position homeLocation
+        {
+            get;
+            set;
+        }
 
-        public Int32 distance { get; set; }
+        public Int32 distance
+        {
+            get;
+            set;
+        }
 
-        public Map userMap { get; set; }
-
-
-
+        public Map userMap
+        {
+            get;
+            set;
+        }
 
         public MapViewModel()
         {
-            userLocation = new Position(); 
+            userLocation = new Position();
             homeLocation = new Position();
 
-            userMap = new Map(
-                MapSpan.FromCenterAndRadius(
-                    new Position(49.007038, 8.397768),
-                    Distance.FromKilometers(10)
-                ));
+            userMap = new Map(MapSpan.FromCenterAndRadius(
+                new Position(49.007038, 8.397768), Distance.FromKilometers(10)));
 
             Pin p1 = new Pin();
             p1.Position = new Position(49.008851, 8.398506);
