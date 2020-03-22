@@ -30,22 +30,40 @@ namespace StayAtHoome.ViewModels
             {
                 var user = await DependencyService.Get<UserRepository>().GetUserAsync();
                 var location = await Geolocation.GetLocationAsync();
-                UserMap.Pins.Clear();
+                UserMap = new Map();
                 if (location != null)
                 {
                     var centerPosition = new Position(location.Latitude, location.Longitude);
                     UserMap.MoveToRegion(MapSpan.FromCenterAndRadius(centerPosition, Distance.FromKilometers(10)));
 
-                    var current = new Pin
+                    UserMap.Pins.Add(new Pin
                     {
                         Position = centerPosition,
                         Label = "Ich"
-                    };
-                    UserMap.Pins.Add(current);
+                    });
                 }
+
+                var homeLocation = user?.HomeLocation;
+
+                if (homeLocation != null)
+                {
+                    var homePosition = new Position(homeLocation.Latitude, homeLocation.Longitude);
+                    UserMap.Pins.Add(new Pin
+                    {
+                        Position = homePosition,
+                        Label = "Zuhause"
+                    });
+                    if (location == null)
+                    {
+                        UserMap.MoveToRegion(MapSpan.FromCenterAndRadius(homePosition, Distance.FromKilometers(10)));
+                    }
+                }
+                
+                OnPropertyChanged(nameof(UserMap));
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 
             }
 

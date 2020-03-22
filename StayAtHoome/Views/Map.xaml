@@ -7,6 +7,6 @@
              x:Class="StayAtHoome.Views.Map"
              xmlns:vms="clr-namespace:StayAtHoome.ViewModels">
     <ContentPage.Content>
-        <ContentView Content="{Binding userMap}"/>
+        <ContentView Content="{Binding UserMap}"/>
     </ContentPage.Content>
 </ContentPage>
