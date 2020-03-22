@@ -1,5 +1,6 @@
 using System;
 using SQLite;
+using Xamarin.Essentials;
 
 namespace StayAtHoome.Models
 {
@@ -13,5 +14,7 @@ namespace StayAtHoome.Models
         public double? Accuracy { get; set; }
         
         public DateTimeOffset Timestamp { get; set; }
+        
+        public Location Location => new Location(Latitude, Longitude, Timestamp);
     }
 }
