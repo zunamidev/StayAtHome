@@ -1,3 +1,5 @@
+# Stay at Home
+
 # Die Idee
 
 Die App soll einen Anreiz bieten in gewissen Ausnahmesituationen die Distanz zu anderen Menschen zu wahren.
@@ -24,13 +26,22 @@ Ein Vergleich von aktuellem und gespeichertem Standort findet statt. Es soll led
 
 # Zukunftsausblick
 
-* Aktuell arbeiten wir an einem Konzept für die Belohnung der Nutzer
-* Ideen:
-  * nützliche Rabattgutscheine (Lebensmittelgeschäfte etc.)
-  * zielgruppenbezogene Rabattgutscheine (Technik oder Sportgeräte)
-* Server zur Überprüfung der “Heimzeit” der Nutzer und zentralen Erfassung der Punkte eines Nutzers
-* Gewinn von Partnern zur Umsetzung des Belohnungssystems
-  * Vorteile für Partner: Erweiterung des Kundenstamms
+* Überlegungen zur Implementierung eines Belohnungssystems:
+  * Punkte-Kriterien:
+     * userLocation entspricht homeLocation => wenn Distanz < 20m (abhängig von Genauigkeit des Standort-Trackings).
+     * Je mehr Zeit zuhause verbracht wird, desto mehr Punkte können verdient werden.
+     * Berücksichtigung der Tageszeit / des Wochentages, um ein Punktefarmen zu verhindern.
+     * (Ansatz für einen dynamischen Multiplikator)
+   * Belohnungen:
+     * Zielgruppenbasierte Belohnungen:
+          * Auswahl aus verschiedenen Kategorien, um jede Alters- und Interessengruppe anzusprechen.
+     * Nützliche Dinge des Alltags:
+          * z.B. Rabatt-Coupons für Lebensmittelgeschäfte und Drogeriemärkte (Essentials)
+
+# ToDos:
+  * Server zur Überprüfung der “Heimzeit” der Nutzer und zentralen Erfassung der Punkte eines Nutzers
+  * Gewinn von Partnern zur Umsetzung des Belohnungssystems
+    * Vorteile für Partner: Erweiterung des Kundenstamms
 
 # Team
 
@@ -39,5 +50,5 @@ Ein Vergleich von aktuellem und gespeichertem Standort findet statt. Es soll led
 * Marian Theisen (github: cice)
 
 
-# Unser Code
-[Xamarin Cross-Platform Source Code auf GitHub](https://github.com/zunamidev/StayAtHome)
+# Unser Devpost Beitrag
+[Devpost](https://devpost.com/software/stay-at-home-hc38ep)
