@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -15,10 +15,16 @@
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />  
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.5.0.396" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\AboutPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Map.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
