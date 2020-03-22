@@ -41,6 +41,8 @@ namespace StayAtHoome.ViewModels
             {
                 MaxValue = 24,
                 AnimationDuration = TimeSpan.FromMilliseconds(300),
+                ValueLabelOrientation = Orientation.Horizontal,
+                LabelOrientation = Orientation.Horizontal,
                 Entries = MoreEnumerable.Sequence(0, 6).Select(x =>
                 {
                     var day = StartDate.AddDays(x);
