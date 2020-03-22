@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 using StayAtHoome.Background;
 using StayAtHoome.Data;
+using StayAtHoome.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +21,7 @@ namespace StayAtHoome.Views
             
             CheckUserExists().SafeFireAndForget();
             new PeriodicLocationTracker().Execute().SafeFireAndForget();
+
         }
         
 
@@ -28,7 +30,7 @@ namespace StayAtHoome.Views
             await LocalDatabase.WaitInitialized;
             var userRepo = DependencyService.Get<UserRepository>();
             var user = await userRepo.GetUserAsync();
-            if (user != null) return;
+            if (user?.HomeLatitude != null && !string.IsNullOrWhiteSpace(user.Name)) return;
 
             await Navigation.PushModalAsync(new OnboardingPage());
         }

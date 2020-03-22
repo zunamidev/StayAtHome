@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage
-xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="StayAtHoome.Views.HomePage" xmlns:vm="clr-namespace:StayAtHoome.ViewModels" Title="{Binding Title}">
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    x:Class="StayAtHoome.Views.HomePage" xmlns:vm="clr-namespace:StayAtHoome.ViewModels"
+    Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
@@ -11,29 +17,62 @@ xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Image Source="Header.png" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Aspect="Fill" HeightRequest="250"></Image>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Source="Header.png" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Aspect="Fill"
+                   HeightRequest="250" />
 
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,60,0,40" VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Label FontSize="18" TextColor="White">
+                                <Label.Text>
+                                    Das ist deine Übersicht
+                                </Label.Text>
+                            </Label>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,60,0,40" VerticalOptions="FillAndExpand">
-                    <StackLayout>
-                    <Label FontSize="18" TextColor="White">
-                        <Label.Text>
-                            Das ist deine Übersicht
-                        </Label.Text>
-                    </Label>
-
-                    <Label FontSize="28" FontAttributes="Bold" TextColor="White" Text="{Binding Greeting}">
-                    </Label>
-                    </StackLayout>
-                </ContentView>
+                            <Label FontSize="28" FontAttributes="Bold" TextColor="White" Text="{Binding Greeting}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="12" TextColor="White" HorizontalOptions="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Heute Zuhause: " />
+                                            <Span
+                                                Text="{Binding LocationHistory.Today.HoursAtHome, TargetNullValue='0'}" />
+                                            <Span Text="h" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="12" TextColor="White" HorizontalOptions="End">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Nicht zuhause: " />
+                                            <Span
+                                                Text="{Binding LocationHistory.Today.HoursNotAtHome, TargetNullValue='0'}" />
+                                            <Span Text="h" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ContentView>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-    </Grid>
+
+            <StackLayout Grid.Row="1">
+                <Frame HasShadow="True" BindingContext="{Binding WeeksViewModels[0]}" Margin="20">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding DateString}" />
+                        <Label Text="{Binding TotalString}" />
+                        <microcharts:ChartView HeightRequest="160" Chart="{Binding Chart}" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

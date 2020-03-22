@@ -19,5 +19,23 @@ namespace StayAtHoome.Data
             
             Console.WriteLine($"We have {records} location records");
         }
+
+        public async Task<LocationRecord[]> GetLocationRecordsAsync(DateTimeOffset from)
+        {
+            return await _database.Table<LocationRecord>()
+                .Where(x => x.Timestamp >= from)
+                .OrderBy(x => x.Timestamp)
+                .ToArrayAsync();
+        }
+
+        public async Task Clear()
+        {
+            await _database.DeleteAllAsync(await _database.GetMappingAsync<LocationRecord>());
+        }
+
+        public Task<int> Count()
+        {
+            return _database.Table<LocationRecord>().CountAsync();
+        }
     }
 }

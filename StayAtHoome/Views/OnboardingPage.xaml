@@ -2,30 +2,38 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              xmlns:vm="clr-namespace:StayAtHoome.ViewModels;assembly=StayAtHoome"
              x:Class="StayAtHoome.Views.OnboardingPage">
     <ContentPage.BindingContext>
-        <vm:OnboardingViewModel/>
+        <vm:OnboardingViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        
+
         <StackLayout Margin="20">
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Label Text="Hey, wie heisst du?"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center" 
-                       FontSize="18"/>
-                <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20" Text="{Binding UserName,Mode=TwoWay}">
+                       HorizontalOptions="Center"
+                       FontSize="18" />
+                <Entry VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20"
+                       Text="{Binding UserName,Mode=TwoWay}">
                     <Entry.Keyboard>
                         <Keyboard x:FactoryMethod="Create">
-                            <x:Arguments><KeyboardFlags>None</KeyboardFlags></x:Arguments>
+                            <x:Arguments>
+                                <KeyboardFlags>None</KeyboardFlags>
+                            </x:Arguments>
                         </Keyboard>
                     </Entry.Keyboard>
                 </Entry>
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding HasNoHomeLocation}">
+                    <CheckBox IsChecked="{Binding CurrentlyHome, Mode=TwoWay}" />
+                    <Label Text="Ich bin gerade zuhause"
+                           FontSize="18" />
+                </StackLayout>
             </StackLayout>
             <StackLayout VerticalOptions="End">
                 <Button Text="Weiter" HorizontalOptions="End"
@@ -33,7 +41,7 @@
                         FontSize="15"
                         Padding="12"
                         BackgroundColor="#91B9D6"
-                        CornerRadius="8"/>
+                        CornerRadius="8" />
             </StackLayout>
 
         </StackLayout>

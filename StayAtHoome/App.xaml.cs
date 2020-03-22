@@ -19,6 +19,9 @@ namespace StayAtHoome
             DependencyService.Register<UserRepository>();
             DependencyService.Register<NavigationService>();
             DependencyService.Register<LocationRecordRepository>();
+            DependencyService.Register<LocationHistoryService>();
+            
+            // new DemoService().LoadDemoData().SafeFireAndForget();
             MainPage = new MainPage();
         }
 
