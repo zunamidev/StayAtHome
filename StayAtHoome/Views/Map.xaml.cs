@@ -17,10 +17,9 @@ namespace StayAtHoome.Views
        
         public Map()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-
-
-
+            
             BindingContext = viewModel = new ViewModels.MapViewModel();
 
         }
