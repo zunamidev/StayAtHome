@@ -33,7 +33,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:HomePage />
+                <views:Map />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
