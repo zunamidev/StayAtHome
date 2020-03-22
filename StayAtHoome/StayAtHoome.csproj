@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="4.1.0" />
+    <PackageReference Include="GeoJSON.Net" Version="1.2.15" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
@@ -20,5 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\AboutPage.xaml" />
+    <None Remove="DemoData\track_points.geojson" />
+    <EmbeddedResource Include="DemoData\track_points.json" />
   </ItemGroup>
 </Project>

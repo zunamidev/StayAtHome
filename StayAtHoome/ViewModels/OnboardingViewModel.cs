@@ -52,7 +52,7 @@ namespace StayAtHoome.ViewModels
             var user = await DependencyService.Get<UserRepository>().GetUserAsync();
             if (user == null) return;
             UserName = user.Name;
-            HasNoHomeLocation = user.HomeLatitude == null;
+            HasNoHomeLocation = !user.HasHomeLocation;
         }
 
         private bool CanSaveUser()
