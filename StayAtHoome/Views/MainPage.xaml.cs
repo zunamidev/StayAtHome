@@ -28,7 +28,7 @@ namespace StayAtHoome.Views
             await LocalDatabase.WaitInitialized;
             var userRepo = DependencyService.Get<UserRepository>();
             var user = await userRepo.GetUserAsync();
-            if (user != null) return;
+            if (user?.HomeLatitude != null) return;
 
             await Navigation.PushModalAsync(new OnboardingPage());
         }

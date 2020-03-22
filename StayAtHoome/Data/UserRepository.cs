@@ -18,11 +18,17 @@ namespace StayAtHoome.Data
             return await _database.Table<User>().FirstOrDefaultAsync();
         }
 
-        public async Task CreateUserAsync(string name)
+        public async Task UpdateUserAsync(User user)
         {
             await LocalDatabase.WaitInitialized;
-            var user = new User {Name = name};
-            await _database.InsertAsync(user);
+            if (user.Id == 0)
+            {
+                await _database.InsertAsync(user);
+            }
+            else
+            {
+                await _database.UpdateAsync(user);
+            }
 
             UserChanged?.Invoke();
         }
